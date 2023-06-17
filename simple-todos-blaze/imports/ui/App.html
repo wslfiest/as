@@ -1,0 +1,36 @@
+<body>
+    {{> mainContainer}}
+</body>
+
+<template name="mainContainer">
+    <div class="container">
+        <header>
+            <h1>Todo list {{incompleteCount}}</h1>
+        </header>
+
+        {{> form }}
+
+        <div>
+            <button id="hide-completed-button">
+                {{#if hideCompleted}}
+                    Show all
+                {{else}}
+                    Hide Completed
+                {{/if}}
+            </button>
+        </div>
+
+        <ul>
+            {{#each tasks}}
+                {{> task}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="form">
+    <form class="task-form">
+        <input type="text" name="text" placeholder="Type to add new tasks" autocomplete="off">
+        <button type="submit">Add Task</button>
+    </form>
+</template>

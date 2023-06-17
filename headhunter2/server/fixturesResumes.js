@@ -1,0 +1,32 @@
+export const ResumesInitialData = [
+    {
+        "id": 1,
+        "surname": "Izgagin",
+        "name": "Nikita",
+        "experience": "admin",
+        "about_me": "anythingtext",
+        "hard-skills": "idk",
+        "soft-skills": "idk",
+        "date": "2022-07-06T17:57:45.830Z",
+    },
+    {
+        "id": 2,
+        "surname": "Poskr",
+        "name": "Maksim",
+        "experience": "admin",
+        "about_me": "anythingtext",
+        "hard-skills": "idk",
+        "soft-skills": "idk",
+        "date": "2021-07-06T17:57:45.830Z",
+    },
+    {
+        "id": 3,
+        "surname": "Dolganov",
+        "name": "Jenya",
+        "experience": "user",
+        "about_me": "anythingtext",
+        "hard-skills": "idk",
+        "soft-skills": "idk",
+        "date": "2023-08-06T17:57:45.830Z",
+    },
+]

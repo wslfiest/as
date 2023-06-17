@@ -1,0 +1,37 @@
+<body>
+    {{> mainContainer }}
+</body>
+
+<template name="mainContainer">
+    {{#if isUserLogged}}
+    <div class="user">
+        {{getUser.username}} 🚪
+    </div>
+    <div class="container">
+        <header>
+            <h1>Test</h1>
+        </header>
+        <div class ="main">
+
+            <p>resumes:</p>
+            <ul>
+                {{#each resumes}}
+                    {{> task}}
+                {{/each}}
+            </ul>
+            <p>vacancies:</p>
+            <ul>
+                {{#each vacancies}}
+                    {{> task}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{else}}
+        {{>login}}
+    {{/if}}
+</template>
+
+<template name="task">
+    <li>{{name}}</li>
+</template>

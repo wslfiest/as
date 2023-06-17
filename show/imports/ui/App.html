@@ -1,0 +1,187 @@
+<template name="App_body">
+  <body>
+    <header class="header">
+      <div class="header__role-switcher">
+        <select name="roles" id="role-select">
+          <option value="1">Пользователь</option>
+          <option value="2">Оператор первой линии</option>
+          <option value="3">Оператор второй линии</option>
+          <option value="4">Менеджер</option>
+          <option value="5" selected>Администратор</option>
+        </select>
+      </div>
+      <span class="header__logo">TechLife.TEAM</span>
+    </header>
+    <nav class="navigation">
+    <ul class="navigation__list">
+      <li class="navigation__item"><a class="navigation__link" href="/add"><span>Добавить</span></a></li>
+      <li class="navigation__item"><a class="navigation__link" href="/claims"><span>Просмотреть</span></a></li>
+    </ul>
+    </nav>
+    <main class="main">
+    {{> Template.dynamic template=main}}
+    </main>
+  </body>
+</template>
+
+<template name="mainTemplateMain">
+  {{> accounting}}
+  {{> tech}}
+</template>
+
+<template name="mainTemplateKb">
+  {{> hello}}
+</template>
+
+<template name="mainTemplateDb">
+  <h2>ClaimsCollection</h2>
+  <ol>
+    {{#each claims}}
+    <li>
+      <p>
+        id: {{ id }} <br>
+        create_date: {{ create_date }} <br>
+        id_type_claim: {{ id_type_claim }} <br>
+        type_claim: {{type_claim}} <br>
+        text: {{text}} <br>
+        id_priority: {{id_priority}} <br>
+        priorities: {{priorities}} <br>
+        time_according_sla: {{time_according_sla}} <br>
+        id_state: {{id_state}} <br>
+        state: {{state}} <br>
+        place_of_service: {{place_of_service}} <br>
+        date_time_edit_state: {{date_time_edit_state}} <br>
+        date_time_close_claim: {{date_time_close_claim}} <br>
+        id_autor: {{id_autor}} <br>
+        sys_number_autor: {{sys_number_autor}} <br>
+        autor: {{autor}} <br>
+        id_executor: {{id_executor}} <br>
+        sys_number_executor: {{sys_number_executor}} <br>
+        executor: {{executor}} <br>
+        comment: {{comment}} <br>
+      </p>
+    </li>
+    {{/each}}
+  </ol>
+</template>
+
+<template name="hello">
+  <h3>Action Route</h3>
+  <p><a href="/action">/action</a></p>
+  <h3>Reactive var</h3>
+  <button>{{counter}}</button>
+</template>
+
+<template name="accounting">
+  <h2>Бухгалтерия</h2>
+  <p>Информация о бухгалтерии и способах взаимодействия с ней.</p>
+  <p>Информация о получении справок 2-НДФЛ и отсылка к тому, что сейчас справки вообще необязательно получать: можно заказать в налоговой по итогам года. Но если справка текущего года или всё равно нужна, можно и заказать.</p>
+  <ul>
+    <li><a href="#">Заказать справку</a> (при клике на неё просто появляется окно, что заявка принята, запускается событие добавления в базу, колокольчик загорается)</li>
+  </ul>
+</template>
+
+<template name="tech">
+  <h2>Техническая служба</h2>
+  <p>Информация о технической службе и способах взаимодействия с ней.</p>
+  <ul>
+    <li><a href="#">Подключить рабочее место новому сотруднику</a></li>
+    <li><a href="#">Изменить доменный пароль</a></li>
+    <li><a href="#">Установить софт</a></li>
+    <li><a href="#">Починить софт</a></li>
+  </ul>
+</template>
+
+<template name="mainTemplateClaims">
+  <div class="filter-claims">
+    <h2 class="filter-claims__header">Фильтры</h2>
+    <div class="filter-claims__canvas helper__hidden">
+      <h3>Приоритет</h3>
+      <p><label><input class="filter filter__checkbox show_priority_3" type="checkbox" checked name="show_priority_3"><span>Низкий</span></label></p>
+      <p><label><input class="filter filter__checkbox show_priority_2" type="checkbox" checked name="show_priority_2"><span>Нормальный</span></label></p>
+      <p><label><input class="filter filter__checkbox show_priority_1" type="checkbox" checked name="show_priority_1"><span>Критичный</span></label></p>
+      <h3>Тип заявки</h3>
+      <p><label><input class="filter filter__checkbox show_type_1" type="checkbox" checked name="show_type_1"><span>Подключение рабочего места новому сотруднику</span></label></p>
+      <p><label><input class="filter filter__checkbox show_type_2" type="checkbox" checked name="show_type_2"><span>Смена доменного пароля</span></label></p>
+      <p><label><input class="filter filter__checkbox show_type_3" type="checkbox" checked name="show_type_3"><span>Установка специализированного ПО</span></label></p>
+      <p><label><input class="filter filter__checkbox show_type_4" type="checkbox" checked name="show_type_4"><span>Устранение ошибки ПО</span></label></p>
+      <p><label><input class="filter filter__checkbox show_type_5" type="checkbox" checked name="show_type_5"><span>Формирование справки по форме 2-НДФЛ</span></label></p>
+      <h3>Статус заявки</h3>
+      <p><label><input class="filter filter__checkbox show_state_1" type="checkbox" checked name="show_state_1"><span>В обработке</span></label></p>
+      <p><label><input class="filter filter__checkbox show_state_2" type="checkbox" checked name="show_state_2"><span>В ожидании выполнения</span></label></p>
+      <p><label><input class="filter filter__checkbox show_state_3" type="checkbox" checked name="show_state_3"><span>В работе</span></label></p>
+      <p><label><input class="filter filter__checkbox show_state_4" type="checkbox" checked name="show_state_4"><span>В ожидании уточнения</span></label></p>
+      <p><label><input class="filter filter__checkbox show_state_5" type="checkbox" checked name="show_state_5"><span>Выполнено</span></label></p>
+      <p><label><input class="filter filter__checkbox show_state_6" type="checkbox" checked name="show_state_6"><span>Отклонено</span></label></p>
+      <p><label><input class="filter filter__checkbox show_state_7" type="checkbox" checked name="show_state_7"><span>Закрыт</span></label></p>
+      <h3>Дата создания</h3>
+      С <input type="datetime-local"> по <input type="datetime-local">
+      <h3>Дата планируемого окончания</h3>
+      С <input type="datetime-local"> по <input type="datetime-local">
+    </div>
+  </div>
+  <ul class="claims">
+    {{#each claims}}
+      <li class="claims__item claim {{priorityClass id_priority}}">
+        <div class="claim__left">
+          <h3 class="claim__title" title="{{ _id }}">Заявка № {{id}} <sup>{{type id_type_claim}}</sup></h3>
+          <p>Статус: {{state}}</p>
+          <p>
+            Инициатор: {{userName id_autor}}
+            {{#if id_executor}}<br>Исполнитель: {{userName id_executor}}{{/if}}
+          </p>
+          {{#if place_of_service}}<p>Место: {{place_of_service}}</p>{{/if}}
+          <p>Текст заявки: {{text}}</p>
+          {{#if comment}}<p>Комментарий: {{comment}}</p>{{/if}}
+        </div>
+        <div class="claim__right">
+          <p class="claim__creation-time">
+            Создана: {{ prettyDate create_date }} <br>
+            Выделенное время: {{time_according_sla}} мин <br>
+            {{#if date_time_edit_state}}Изменена: {{prettyDate date_time_edit_state}}{{/if}} <br>
+            {{#if date_time_close_claim}}Закрыта: {{prettyDate date_time_close_claim}}{{/if}} <br><br>
+            <br>
+          </p>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="mainTemplateAdd">
+  <form class="form js-form">
+    <h2 class="form__header">Новая заявка</h2>
+    <div class="form_section">
+      <div class="form_input-wraper">
+        <label class="form__label form__label--text" for="type">Тип заявки: <sup style="color:red">*</sup></label>
+        <select class="form__input" id="type" name="type" required>
+          <option value="1">Подключение рабочего места новому сотруднику в офисе</option>
+          <option value="2">Смена доменного пароля</option>
+          <option value="3">Установка специализированного ПО</option>
+          <option value="4">Устранение ошибки ПО</option>
+          <option value="5">Формирование справки по форме 2-НДФЛ</option>
+        </select>
+      </div>
+      <div class="form_input-wraper">
+        <label class="form__label form__label--text" for="priority">Приоритет: <sup style="color:red">*</sup></label>
+        <select class="form__input" id="priority" name="priority" required>
+          <option value="1">Критический</option>
+          <option value="2">Нормальный</option>
+          <option value="3">Низкий</option>
+        </select>
+      </div>
+      <div class="form_input-wraper">
+        <label for="text">Текст заявки: <sup style="color:red">*</sup><br></label>
+        <textarea class="form__input" id="text" name="text" rows="5" required></textarea>
+      </div>
+      <div class="form_input-wraper">
+        <label class="form__label form__label--text" for="place">Место обслуживания:</label>
+        <input class="form__input form__input--text" name="place" id="place" type="text">
+      </div>
+    </div>
+    <div class="form_section">
+      <input class="form_button" type="submit" value="Подать заявку">
+    </div>
+    <div id="maxId" hidden>{{maxId}}</div>
+  </form>
+</template>
