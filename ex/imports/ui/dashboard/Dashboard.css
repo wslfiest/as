@@ -1,0 +1,110 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  color: #fbfaf5;
+  display: flex;
+}
+
+.panel {
+  overflow-y: scroll;
+  height: 100vh;
+  width: 40vw;
+  padding: 30px;
+}
+
+.panel--staff-units,
+.panel--colored {
+  background-image: linear-gradient(135deg,  #dbab5d 0%,#732585 50%,#2050ca 100%);
+}
+
+.panel--calendar {
+  width: 20vw;
+}
+
+.panel--single {
+  width: 100vw;
+}
+
+.panel-limiter {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+.staff-units {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.staff-units__item {
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.card:hover {
+  outline: 1px solid #ffffff;
+}
+
+.card__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #fbfaf5;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card__detail {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: #fbfaf5;
+}
+
+.card__detail a {
+  color: #fbfaf5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card__detail--phone {
+  margin-top: 10px;
+}
+
+.place {
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card--inner:hover {
+  outline: 0;
+}

@@ -1,0 +1,17 @@
+<template name="StaffUnits">
+    <h2 class="title">Вакансии</h2>
+    <ul class="staff-units">
+      {{#each staffunits}}
+        {{> staffUnit}}
+      {{/each}}
+    </ul>
+</template>
+
+<template name="staffUnit">
+  <li class="staff-units__item">
+    <a class="card" href="/staff-unit/{{ id }}">
+      <h3 class="card__title">{{ positionNameByPositionId positionId }}</h3>
+      <p class="card__detail">{{ statusNameByStatus status}} вакансия № {{ trimmedId id }}</p>
+    </a>
+  </li>
+</template>

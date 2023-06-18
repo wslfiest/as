@@ -1,0 +1,43 @@
+<template name="Login">
+    {{#if isUserLogged}}
+
+    <!-- Кнопка для выхода из аккаунта -->
+    <div class="user">
+        {{getUser.username}} 🚪
+    </div>
+
+    <!-- Если пользователь не залогинен, выводит форму авторизации -->
+    {{else}}
+        {{>LoginForm}}
+    {{/if}}
+    {{> Template.dynamic template=main}}
+</template>
+
+<template name="loginForm">
+    <form class="login-form">
+        <div>
+            <label htmlFor="username">Username</label>
+
+            <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    required
+            />
+        </div>
+
+        <div>
+            <label htmlFor="password">Password</label>
+
+            <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    required
+            />
+        </div>
+        <div>
+            <button type="submit">Log In</button>
+        </div>
+    </form>
+</template>
